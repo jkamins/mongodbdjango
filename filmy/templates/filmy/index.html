@@ -1,0 +1,61 @@
+{% extends 'filmy/base.html' %}
+
+{% block title %}Strona Główna — Baza Filmów{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 2rem 0 1.5rem;">
+    <h1 class="page-title">Baza Filmów</h1>
+    <p class="page-subtitle">Zarządzaj filmami, reżyserami i recenzjami</p>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">{{ liczba_filmow }}</div>
+            <div style="color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Filmów</div>
+            <a href="{% url 'filmy_lista' %}" class="btn btn-accent mt-3">Zobacz filmy</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">{{ liczba_rezyserow }}</div>
+            <div style="color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Reżyserów</div>
+            <a href="{% url 'rezyserzy_lista' %}" class="btn btn-accent mt-3">Zobacz reżyserów</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent);">{{ liczba_recenzji }}</div>
+            <div style="color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Recenzji</div>
+            <a href="{% url 'recenzje_lista' %}" class="btn btn-accent mt-3">Zobacz recenzje</a>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <a href="{% url 'filmy_dodaj' %}" class="card p-3 d-flex flex-row align-items-center gap-3 text-decoration-none">
+            <div>
+                <div style="font-weight: 600; font-size: 0.9rem; color: var(--text);">Dodaj film</div>
+                <div style="color: var(--muted); font-size: 0.8rem;">Nowy wpis do bazy</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="{% url 'rezyserzy_dodaj' %}" class="card p-3 d-flex flex-row align-items-center gap-3 text-decoration-none">
+            <div>
+                <div style="font-weight: 600; font-size: 0.9rem; color: var(--text);">Dodaj reżysera</div>
+                <div style="color: var(--muted); font-size: 0.8rem;">Nowy wpis do bazy</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="{% url 'recenzje_dodaj' %}" class="card p-3 d-flex flex-row align-items-center gap-3 text-decoration-none">
+            <div>
+                <div style="font-weight: 600; font-size: 0.9rem; color: var(--text);">Dodaj recenzję</div>
+                <div style="color: var(--muted); font-size: 0.8rem;">Nowy wpis do bazy</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

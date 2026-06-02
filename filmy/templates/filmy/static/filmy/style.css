@@ -1,0 +1,142 @@
+:root {
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --accent: #2563eb;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.navbar {
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 2rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent) !important;
+}
+
+.nav-link {
+    color: var(--muted) !important;
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    color: var(--text) !important;
+}
+
+.main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.btn-accent {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-accent:hover {
+    background: #1d4ed8;
+    color: white;
+}
+
+.btn-outline-light {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.btn-outline-light:hover {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.form-control, .form-select {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px #2563eb20;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.table th {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-color: var(--border);
+}
+
+.table td {
+    border-color: var(--border);
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.badge-gatunek {
+    background: #eff6ff;
+    color: var(--accent);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.ocena {
+    color: #d97706;
+    font-weight: 600;
+}
+
+.search-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}

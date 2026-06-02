@@ -1,0 +1,51 @@
+{% extends 'filmy/base.html' %}
+
+{% block title %}Szukaj reżyserów — Baza Filmów{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h1 class="page-title">Szukaj reżyserów</h1>
+</div>
+
+<div class="search-box mb-4">
+    <form method="get" class="d-flex gap-3 align-items-end">
+        <div style="flex: 1;">
+            <label class="form-label">Nazwisko</label>
+            <input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Wpisz nazwisko...">
+        </div>
+        <button type="submit" class="btn btn-accent">Szukaj</button>
+    </form>
+</div>
+
+{% if q %}
+<p class="page-subtitle">Wyniki dla: <strong style="color: var(--text);">{{ q }}</strong> — {{ wyniki|length }} rezultatów</p>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>Imię i nazwisko</th>
+                    <th>Narodowość</th>
+                    <th>Urodzony</th>
+                    <th>Nagrody</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in wyniki %}
+                <tr>
+                    <td style="font-weight: 500;">{{ r.imie }} {{ r.nazwisko }}</td>
+                    <td>{{ r.narodowosc }}</td>
+                    <td style="color: var(--muted);">{{ r.urodzony }}</td>
+                    <td>{% for n in r.nagrody %}<span class="badge-gatunek">{{ n }}</span> {% endfor %}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center py-4" style="color: var(--muted);">Brak wyników.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

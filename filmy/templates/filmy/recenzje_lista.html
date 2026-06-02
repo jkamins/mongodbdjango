@@ -1,0 +1,65 @@
+{% extends 'filmy/base.html' %}
+
+{% block title %}Recenzje — Baza Filmów{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="page-title">Recenzje</h1>
+        <p class="page-subtitle">{{ recenzje|length }} pozycji w bazie</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="{% url 'recenzje_szukaj' %}" class="btn btn-outline-light">
+            <i class="bi bi-search me-1"></i>Szukaj
+        </a>
+        <a href="{% url 'recenzje_dodaj' %}" class="btn btn-accent">
+            <i class="bi bi-plus-lg me-1"></i>Dodaj recenzję
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>Film</th>
+                    <th>Autor</th>
+                    <th>Ocena</th>
+                    <th>Treść</th>
+                    <th>Data</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in recenzje %}
+                <tr>
+                    <td style="font-weight: 500;">{{ r.film }}</td>
+                    <td>{{ r.autor }}</td>
+                    <td><span class="ocena">{{ r.ocena }}/10</span></td>
+                    <td style="color: var(--muted); max-width: 300px;">{{ r.tresc }}</td>
+                    <td style="color: var(--muted);">{{ r.data }}</td>
+                    <td>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="{% url 'recenzje_edytuj' r.id %}" class="btn btn-outline-light btn-sm">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="{% url 'recenzje_usun' r.id %}"
+                               class="btn btn-sm"
+                               style="color: #dc2626;"
+                               onclick="return confirm('Usunąć tę recenzję?')">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center py-5" style="color: var(--muted);">Brak recenzji w bazie.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

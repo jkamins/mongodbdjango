@@ -1,0 +1,62 @@
+{% extends 'filmy/base.html' %}
+
+{% block title %}Szukaj filmów — Baza Filmów{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h1 class="page-title">Szukaj filmów</h1>
+</div>
+
+<div class="search-box mb-4">
+    <form method="get" class="d-flex gap-3 align-items-end">
+        <div style="flex: 1;">
+            <label class="form-label">Fraza</label>
+            <input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Wpisz fraze...">
+        </div>
+        <div style="width: 200px;">
+            <label class="form-label">Szukaj po</label>
+            <select name="pole" class="form-select">
+                <option value="tytul" {% if pole == 'tytul' %}selected{% endif %}>Tytule</option>
+                <option value="rezyser" {% if pole == 'rezyser' %}selected{% endif %}>Reżyserze</option>
+                <option value="gatunek" {% if pole == 'gatunek' %}selected{% endif %}>Gatunku</option>
+                <option value="kraj" {% if pole == 'kraj' %}selected{% endif %}>Kraju</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-accent">Szukaj</button>
+    </form>
+</div>
+
+{% if q %}
+<p class="page-subtitle">Wyniki dla: <strong style="color: var(--text);">{{ q }}</strong> — {{ wyniki|length }} rezultatów</p>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>Tytuł</th>
+                    <th>Reżyser</th>
+                    <th>Rok</th>
+                    <th>Gatunek</th>
+                    <th>Ocena</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for film in wyniki %}
+                <tr>
+                    <td style="font-weight: 500;">{{ film.tytul }}</td>
+                    <td>{{ film.rezyser }}</td>
+                    <td style="color: var(--muted);">{{ film.rok }}</td>
+                    <td><span class="badge-gatunek">{{ film.gatunek }}</span></td>
+                    <td><span class="ocena">{{ film.ocena }}</span></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-4" style="color: var(--muted);">Brak wyników.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
